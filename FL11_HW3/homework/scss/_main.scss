@@ -1,0 +1,248 @@
+$screenWidth: 960px;
+$sectionBannerHeight: 90px;
+$sectionBannerWidth: 600px;
+
+$bunnerColors: (
+  left: $blockGradientLeftColor,
+  right: $blockGradientRightColor,
+);
+
+@function calc-bunner-shift-v($height) {
+    @return $height / 2;
+}
+
+@function calc-bunner-shift-h($width) {
+    @return ($screenWidth - $width) / 2;
+}
+
+@mixin buttonDescription($color) {
+    width: 90px;
+    height: 28px;
+    background-color: $color;
+    border: none;
+    color: white;
+    font-weight: bold;
+  }
+
+@mixin logoBuilder($textColor, $fontStyle){
+    img{
+        height: 28px;
+        width: auto; 
+        margin: {
+            right: 10px;
+            top: 10px;
+        }
+    }
+
+    p{
+        line-height: 1;
+        text-align: center;
+        font: {
+            size: 15px;
+            family: $fontStyle;
+        }
+        color: $textColor;
+
+        span{
+            display: block;
+            font-size: 7px;
+        }
+    }
+}
+
+@media screen{
+    body{
+        max-width: $screenWidth;
+        margin: auto;
+        justify-content: center;
+        background-color: $contentBackgroundColor;
+        padding: 0;
+        margin-top: 0;
+        font-family: $fontStyle;
+
+        header{
+            background-image:  $headerBackground;
+            background: {
+                size: $screenWidth;
+                position: 0px -94px;
+            }
+            height: 450px;
+            border-radius:0 0 390px/180px 0;
+            font-family: $fontStyle3;
+            
+            .header-wrap{
+                margin-left: 95px;
+                width: 400px;
+                color: $headerTextColor;
+
+                .landing-logo{
+                    padding: 0;
+                    margin: 0;
+                    display: flex;
+                    flex-direction: row;
+
+                    @include logoBuilder($logoTextColorHeader, $fontStyle2);
+                }
+
+                .header_heading{
+                    font: {
+                        size: 41px;
+                        weight: bolder;
+                    }
+                }
+
+                .header_text{
+                    font-size: 10px;
+                }
+
+                .header_button{
+                    position: relative;
+                    top: 32px;
+                    
+                    @include buttonDescription($buttonColor);
+                }
+            }
+        }
+
+        main{
+            position: relative;
+            height: 473px;
+            justify-content: center;
+
+            .section_text{
+                text-align: center;
+                color: $sectionTextColor;
+
+                font: {
+                    size: 25px;
+                    weight: bold;
+                }
+                margin: {
+                    top: 23px;
+                    bottom: 10px;
+                }
+            }
+
+            .section_card_wrap{
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: center;
+
+                .section_card{
+                    background-color: $blockBackgroundColor;
+                    color: $blockTextColor;
+                    text-align: center;
+                    height: auto;
+                    width: auto;
+                    margin: 6px;
+                    padding: 13px;
+                    border-radius: 4px;
+                    
+                    .section_card_img{
+                        width: 222px;
+                        height: auto;
+                        border-radius: 4px;
+                    }
+
+                    .section_card_heading{
+                        margin: 0;
+                        font: {
+                            size: 14px;
+                            width: bold;
+                        }
+                    }
+                    
+                    .section_card_text{
+                        margin: auto;
+                        width: 222px;
+                        font-size: 10px;
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+                }
+            }
+
+            .section_banner{
+                display: flex;
+                position: absolute;
+                bottom: - calc-bunner-shift-v($sectionBannerHeight);
+                left: calc-bunner-shift-h($sectionBannerWidth);   
+                width: $sectionBannerWidth;
+                height: $sectionBannerHeight;   
+                background-image: linear-gradient(to right, map-get($bunnerColors, left), map-get($bunnerColors, right));
+                border-radius: 4px;
+                padding-left: 65px;
+                box-sizing: border-box;
+
+                .section_banner_text_wrap{
+                    .section_banner_heading{
+                        font-weight: bolder;
+                        margin-bottom: 7px;
+                        color: $bunnerHeadingTextColor
+                    }
+
+                    .section_banner_text{
+                        font-size: 10px;
+                        margin: 0;
+                        color: $bunnerTextColor;
+                    }
+                }
+
+                .section_banner_button{
+                    position: relative;
+                    left: 160px;
+                    top: 32px;
+
+                    @include buttonDescription($buttonColor);
+                }
+            }
+        }
+
+        footer{
+            flex: 1 100%; 
+            background-color: $blockBackgroundColor;
+            color: $blockTextColor;
+
+            .footer-wrap{
+                padding-top: 45px;
+                display: flex;
+                flex-direction: row;
+                height: 155px;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                font-size: 9px;
+                box-sizing: border-box;
+
+                .footer_logo{
+                    flex: 1;
+                    padding: 10px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    padding-top: 30px;
+                    padding-left: 30px;
+
+                    @include logoBuilder($logoTextColorFooter, $fontStyle2);
+                }
+
+                .footer_text{
+                    @extend .footer-cr;
+                    
+                    padding: {
+                        left: 80px;
+                        right: 120px;
+                    };    
+                }
+
+                .footer-cr{
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    box-sizing: border-box;
+                    margin-left: 40px;
+                }
+            }
+        }
+    }
+}
