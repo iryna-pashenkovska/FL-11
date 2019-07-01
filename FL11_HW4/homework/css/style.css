@@ -53,7 +53,6 @@
     }
 
     .nav-item{
-        flex-basis: 1;
         border: 1px solid #000;
         color: white;
         width: 20%;
@@ -128,14 +127,12 @@
 
     .section_article_img{
         position: relative;
-        flex-basis: 1;
         background-size: 100%;
         width: 100%;
         padding: 1%;
     }
 
     .section_article_text{
-        flex-basis: 1;
         text-align: center;
         width: 50%;
         padding: 1%;
@@ -155,9 +152,8 @@
     }
 
     .section_gallery_img{
-        flex-basis: 1;
         width: 100%;
-        height: 100%;
+        height: 100%;f
         padding: 5%;
         background-position: right;
         background-repeat: no-repeat;
